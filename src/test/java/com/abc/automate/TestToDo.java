@@ -32,15 +32,12 @@ public class TestToDo {
 @DisplayName("Validate if San Francisco Exists")
 	public void validateEndpoint(){
 
-	String[] vectest= new String[1];
-	vectest[0] = "[San Francisco]";
-
 	given().
 		when().
 				get("/us/94105").
 				then().
 				statusCode(200).
-				assertThat().body("places.'place name'", equalTo(vectest[0]));
+				assertThat().body("places.'place name'", hasItem("San Francisco"));
 	}
 
 }
